@@ -16,7 +16,7 @@ using namespace std;
 */
 
 bintree<int> leerArbol() {
-	
+
 	int raiz;
 	cin >> raiz;
 
@@ -35,8 +35,8 @@ bintree<int> leerArbol() {
 /**
 * Función principal. Si la raiz es vacía el arbol es AVL. En otro caso,
 * comprobamos que la raiz está entre el valor mínimo y máximo y si es así se comprueba que
-* comprobamos que la diferencia de alturas de las dos ramas cumple la condición para ser balanceado. 
-* En caso de que alguna de estas condiciones no se cumpla, el árbol no es AVL.  
+* comprobamos que la diferencia de alturas de las dos ramas cumple la condición para ser balanceado.
+* En caso de que alguna de estas condiciones no se cumpla, el árbol no es AVL.
 * Complejidad O(n) siendo n el número de nodos.
 * @param arbol que se quiere analizar
 * @param altura altura maxima de las ramas del arbol
@@ -79,11 +79,11 @@ bool resuelve(bintree<int> const &arbol, int &altura, int min, int max) {
 */
 
 void resuelveCaso() {
-		
+
 	auto arbol = leerArbol();
 
 	int a = 0;
-	if (resuelve(arbol, a, INT_MIN, INT_MAX))
+	if (resuelve(arbol, a, INT16_MIN, INT16_MAX))
 		cout << "SI" << endl;
 	else
 		cout << "NO" << endl;
@@ -92,10 +92,10 @@ void resuelveCaso() {
 
 int main(int argc, char* argv[]) {
 
-	#ifndef DOMJUDGE
-		ifstream in("casos.txt");
-		auto cinbuf = cin.rdbuf(in.rdbuf());
-	#endif
+#ifndef DOMJUDGE
+	ifstream in("casos.txt");
+	auto cinbuf = cin.rdbuf(in.rdbuf());
+#endif
 
 	int numCasos;
 	cin >> numCasos;
