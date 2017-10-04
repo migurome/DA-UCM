@@ -1,3 +1,9 @@
+/*
+* Grupo DA09, Miguel Romero
+* Solución: una función recursiva que recorre el árbol comprobando que está ordenadoy que está balanceado
+*
+*  */
+
 #include <algorithm>
 #include <iostream>
 #include <fstream>
@@ -5,7 +11,10 @@
 
 using namespace std;
 
-const int CENTINELA = 0;
+/**
+* Lee un árbol AVL
+*/
+
 
 bool leerDatos(map<int,int> & arbol, int nvalores, int &k1, int &k2) {
 	
@@ -28,6 +37,18 @@ bool leerDatos(map<int,int> & arbol, int nvalores, int &k1, int &k2) {
 	return false;
 }
 
+/**
+* Lee un árbol binario de la entrada estándar
+* 
+* 
+* 
+* 
+* @param arbol
+* @param k1
+* @param k2
+*/
+
+
 void procesarCaso(const map<int, int> & arbol, int k1, int k2) {
 			
 	
@@ -46,6 +67,11 @@ void procesarCaso(const map<int, int> & arbol, int k1, int k2) {
 	cout << endl;
 }
 
+/**
+* Extrae los parametros del fichero y carga el arbol
+*/
+
+
 bool analizarCaso() {
 
 	// ajustes para que cin extraiga directamente de un fichero
@@ -58,16 +84,12 @@ bool analizarCaso() {
 
 	finLectura = leerDatos(arbol, valores, k1, k2);
 
-	if (!finLectura) {
-
+	if (!finLectura)
 		procesarCaso(arbol, k1, k2);
-		//mostrarResultadoCaso(sol);
-	};
 
 	// para dejar todo como estaba al principio
 
 	
-
 	return finLectura;
 }
 
