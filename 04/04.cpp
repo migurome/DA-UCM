@@ -1,19 +1,18 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
-#include "TreeMap_AVL.h"
+#include "TreeMap_AVLM.h"
 
 using namespace std;
 
 bool resuelve( int nvalores) {
 
 	bool finLeer;
-	map<int, int> arbol;
+	map<int, int,std::less<int>> arbol;
+	int dato;
 
 	if (nvalores == 0)
 		return false;
-
-	int dato;
 
 	for (int i = 0; i < nvalores; i++) {
 		cin >> dato;
@@ -21,25 +20,29 @@ bool resuelve( int nvalores) {
 	}
 
 	int num_busq, elem;
-	map<int, int>::iterator it = arbol.begin();
-
+	
 	cin >> num_busq;
 
-	for (int i = 0; i < num_busq; i++) {
+/*
+	map<int, int>::iterator it = arbol.begin();
+	for (int i = 1; i <= arbol.size(); i++) {
+		cout << (*it).clave << endl;
+		++it;
+	}
+*/
+
+	for (int i = 0; i <  num_busq; i++) {
 		cin >> elem;
-		it = arbol.begin();
+		map<int, int>::iterator it = arbol.begin();
 
-		if (elem > arbol.size())
-			cout << "??" << endl;
-		else {
-			int j = 0;
-			while (j < elem - 1){
-				j++;
+		if (elem < arbol.size()) {
+			for (int i = 1; i < elem; i++)	
 				++it;
-			}
-			cout << (*it).clave << endl;
-		}
 
+			cout << (*it).clave << endl; 
+		}	
+		else 
+			cout << "??" << endl;
 	}
 
 	cout << "----" << endl;
