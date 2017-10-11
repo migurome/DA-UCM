@@ -12,7 +12,7 @@
 using namespace std;
 
 /**
-* Lee un árbol binario de la entrada estándar
+* @brief Lee un árbol binario de la entrada estándar
 */
 
 bintree<int> leerArbol() {
@@ -33,7 +33,7 @@ bintree<int> leerArbol() {
 
 
 /**
-* Función principal. Si la raiz es vacía el arbol es AVL. En otro caso,
+* @brief Función principal. Si la raiz es vacía el arbol es AVL. En otro caso,
 * comprobamos que la raiz está entre el valor mínimo y máximo y si es así se comprueba que
 * comprobamos que la diferencia de alturas de las dos ramas cumple la condición para ser balanceado.
 * En caso de que alguna de estas condiciones no se cumpla, el árbol no es AVL.
@@ -75,7 +75,7 @@ bool resuelve(bintree<int> const &arbol, int &altura, int min, int max) {
 }
 
 /**
-* Resuelve un caso de prueba
+* @brief Resuelve un caso de prueba
 */
 
 void resuelveCaso() {
