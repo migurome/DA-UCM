@@ -1,3 +1,8 @@
+/*
+* Grupo DA09, Miguel Romero
+* Solución:
+*/
+
 #include <algorithm>
 #include <iostream>
 #include <fstream>
@@ -5,10 +10,14 @@
 
 using namespace std;
 
- bool leerDatos(PriorityQueue<long int> & cola) {
+/**
+* @brief Lee una cola de prioridad de la entrada estándar
+*/
 
-	 int num_elem;
-	 long int elemento;
+bool leerDatos(PriorityQueue<int> & cola) {
+
+	int num_elem;
+	int elemento;
 
 	cin >> num_elem;
 
@@ -26,11 +35,21 @@ using namespace std;
 	return true;
 }
 
+/**
+* @brief Función principal. Comprobamos que haya mas de elemento en la cola, en caso
+* contrario hemos terminado. Extraemos los valores del primer elemento de la cola, este
+* indica el numero de seguidores, se acumula el numero de gorras repartidas a cada uno de
+* los participantes y por otro lado se calcula el numero de seguidores totales en la
+* partida actual, se eliminan los dos equipos de la cola y se calcula el nuevo numero de seguidores
+* del ganador, que posteriormente es introducido en la cola.
+* Complejidad
+*/
 
 void resuelve() {
-	
-	PriorityQueue<long int> cola;
-	long int gorras, ganador = 0;
+
+	PriorityQueue<int> cola;
+	long int gorras;
+	long int ganador = 0;
 
 	while (leerDatos(cola)) {
 		gorras = 0;
@@ -39,15 +58,16 @@ void resuelve() {
 			gorras += cola.top();
 			ganador = cola.top();
 			cola.pop();
-			
-			if(!cola.empty()){
+
+			if (!cola.empty()) {
 				gorras += cola.top();
 				ganador += cola.top();
 				cola.pop();
-				if(cola.size() >= 1 )
+				if (cola.size() >= 1)
 					cola.push(ganador);
 			}
 		}
+
 		cout << gorras << endl;
 	}
 
@@ -60,8 +80,8 @@ int main(int argc, char** args) {
 		auto cinbuf = std::cin.rdbuf(in.rdbuf());
 	#endif
 
-	
-	resuelve();	
+
+		resuelve();
 
 
 	#ifndef DOMJUDGE
