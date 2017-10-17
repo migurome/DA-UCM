@@ -12,7 +12,10 @@ typedef struct {
 class compare {
 public:
 	bool operator()(tUsuario usuario1, tUsuario usuario2) {
-		return usuario1.prioridad <= usuario2.prioridad;
+		if (usuario1.prioridad == usuario2.prioridad)
+			return usuario1.id < usuario2.id;
+		else
+			return usuario1.prioridad < usuario2.prioridad;
 	}
 };
 
