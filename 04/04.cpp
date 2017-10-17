@@ -1,15 +1,15 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
-#include "TreeMap_AVLM.h"
+#include "TreeMap_AVL.h"
 
 using namespace std;
 
-bool resuelve( int nvalores) {
+bool leerCaso(map<int, int> &arbol){
+	
+	int dato, nvalores;
 
-	bool finLeer;
-	map<int, int,std::less<int>> arbol;
-	int dato;
+	cin >> nvalores;
 
 	if (nvalores == 0)
 		return false;
@@ -19,53 +19,45 @@ bool resuelve( int nvalores) {
 		arbol.insert(dato);
 	}
 
-	int num_busq, elem;
-	
-	cin >> num_busq;
-
-/*
-	map<int, int>::iterator it = arbol.begin();
-	for (int i = 1; i <= arbol.size(); i++) {
-		cout << (*it).clave << endl;
-		++it;
-	}
-*/
-
-	for (int i = 0; i <  num_busq; i++) {
-		cin >> elem;
-		map<int, int>::iterator it = arbol.begin();
-
-		if (elem < arbol.size()) {
-			for (int i = 1; i < elem; i++)	
-				++it;
-
-			cout << (*it).clave << endl; 
-		}	
-		else 
-			cout << "??" << endl;
-	}
-
-	cout << "----" << endl;
-
 	return true;
+
+}
+
+bool resuelve() {
+
+	map<int, int> arbol;
+	int num_busq, elem, kesimo;
+
+	if (leerCaso(arbol)) {
+		cin >> num_busq;
+
+		for (int i = 0; i < num_busq; i++) {
+			cin >> elem;
+			kesimo = arbol.nKesimo(elem);
+			if (kesimo != -1)
+				cout << kesimo << endl;
+			else
+				cout << "??" << endl;
+		}
+
+		cout << "----" << endl;
+
+		return true;
+	}
+	else
+		return false;
 }
 
 
 int main(int argc, char** args) {
-
-	bool fin;
-
+	
 #ifndef DOMJUDGE
 	std::ifstream in("casos.txt");
 	auto cinbuf = std::cin.rdbuf(in.rdbuf());
 #endif
 
 
-	int n_valores;
-
-	do {
-		cin >> n_valores;
-	} while (resuelve(n_valores));
+	while(resuelve());
 
 
 #ifndef DOMJUDGE

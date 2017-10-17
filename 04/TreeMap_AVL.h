@@ -1,5 +1,5 @@
 //
-//  TreeMap_AVLB.h
+//  TreeMap_AVL_M.h
 //
 //  Implementación de diccionarios <clave, valor> como árboles de búsqueda AVL
 //
@@ -10,8 +10,8 @@
 //  Copyright (c) 2017 Alberto Verdejo. All rights reserved.
 //
 
-#ifndef TREEMAP_AVLM_H_
-#define TREEMAP_AVLM_H_
+#ifndef TREEMAP_AVL_H_
+#define TREEMAP_AVL_H_
 
 #include <algorithm>
 #include <functional>
@@ -21,6 +21,7 @@
 #include <string>
 #include <utility>
 #include <type_traits>  // std::conditional
+
 
 
 template <class Clave, class Valor, class Comparador = std::less<Clave>>
@@ -45,10 +46,10 @@ protected:
         clave_valor cv;
         Link iz;
         Link dr;
-		int tam_i;
         size_t altura;
+		size_t tam_i;
         TreeNode(clave_valor const& e, Link i = nullptr, Link d = nullptr,
-                 int alt = 1, int t_i = 1) : cv(e), iz(i), dr(d), altura(alt), tam_i(t_i) {}
+                 int alt = 1, int tam_i = 1) : cv(e), iz(i), dr(d), altura(alt), tam_i(tam_i) {}
     };
     
     // puntero a la raíz de la estructura jerárquica de nodos
@@ -124,8 +125,26 @@ public:
         else
             o << "vacio\n";
     }
+
+	int nKesimo(int k) {
+		if (k > nelems || k <= 0) return -1;
+		else return kesimo(k, raiz->tam_i, 0, raiz);
+	}
+
+
     
 protected:
+
+	int kesimo(int k, int contadorActual, int contadorAnterior, Link a) {
+		if (contadorActual == k) {	
+			return a->cv.clave;
+		}
+		else {
+			if (contadorActual > k) return kesimo(k, contadorAnterior + a->iz->tam_i, contadorAnterior, a->iz);
+			else return kesimo(k, contadorActual + a->dr->tam_i, contadorActual, a->dr);
+		}
+
+	}
     
     static Link copia(Link a) {
         if (a == nullptr) return nullptr;
@@ -139,7 +158,7 @@ protected:
             delete a;
         }
     }
-
+    
     Link busca(Clave const& c, Link a) const {
         if (a == nullptr) {
             return nullptr;
@@ -161,8 +180,9 @@ protected:
             ++nelems;
         }
         else if (menor(cv.clave, a->cv.clave)) {
+			int n = nelems;
             inserta(cv, a->iz);
-			a->tam_i++;
+			if (n != nelems) a->tam_i++;
             reequilibraDer(a);
         }
         else if (menor(a->cv.clave, cv.clave)) {
@@ -199,22 +219,27 @@ protected:
         if (a == nullptr) return 0;
         else return a->altura;
     }
+
+	static size_t tam(Link a) {
+		if (a == nullptr) return 0;
+		else return a->tam_i;
+	}
     
     static void rotaDer(Link & k2) {
         Link k1 = k2->iz;
+		k2->tam_i = tam(k2) - tam(k1);
         k2->iz = k1->dr;
         k1->dr = k2;
-		k2->tam_i--;
-        k2->altura = std::max(altura(k2->iz), altura(k2->dr)) + 1;
+        k2->altura = std::max(altura(k2->iz), altura(k2->dr)) + 1;		
         k1->altura = std::max(altura(k1->iz), altura(k1->dr)) + 1;
-        k2 = k1;
+        k2 = k1;	
     }
     
     static void rotaIzq(Link & k1) {
         Link k2 = k1->dr;
+		k2->tam_i = tam(k2) + tam(k1);
         k1->dr = k2->iz;
         k2->iz = k1;
-		k2->tam_i++;
         k1->altura = std::max(altura(k1->iz), altura(k1->dr)) + 1;
         k2->altura = std::max(altura(k2->iz), altura(k2->dr)) + 1;
         k1 = k2;
@@ -236,7 +261,9 @@ protected:
                 rotaDerIzq(a);
             else rotaIzq(a);
         }
-        else a->altura = std::max(altura(a->iz), altura(a->dr)) + 1;
+		else {
+			a->altura = std::max(altura(a->iz), altura(a->dr)) + 1;
+		}
     }
     
     static void reequilibraDer(Link & a) {
@@ -245,15 +272,16 @@ protected:
                 rotaIzqDer(a);
             else rotaDer(a);
         }
-        else a->altura = std::max(altura(a->iz), altura(a->dr)) + 1;
+		else {
+			a->altura = std::max(altura(a->iz), altura(a->dr)) + 1;
+		}
     }
 
     void borra(Clave const& c, Link & a)  {
         if (a != nullptr) {
             if (menor(c, a->cv.clave)) {
                 borra(c, a->iz);
-				a->tam_i--;
-				reequilibraIzq(a);
+                reequilibraIzq(a);
             }
             else if (menor(a->cv.clave, c)) {
                 borra(c, a->dr);
@@ -295,7 +323,7 @@ protected:
         if (r != nullptr){
             print(o, indent + 2, r->dr);
             o << std::string(indent, ' ');
-            o << '(' << r->cv.clave << ',' << r->cv.valor <<", " << r->tam_i << ")\n";
+            o << '(' << r->cv.clave << ',' << r->cv.valor << ")\n";
             print(o, indent + 2, r->iz);
         }
     }
@@ -321,7 +349,6 @@ protected:
             next();
             return *this;
         }
-
         
         bool operator==(Iterador const& that) const {
             return act == that.act;
