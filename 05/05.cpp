@@ -14,10 +14,10 @@ using namespace std;
 * @brief Lee una cola de prioridad de la entrada estándar
 */
 
-bool leerDatos(PriorityQueue<int> & cola) {
+bool leerDatos(PriorityQueue<long int> & cola) {
 
 	int num_elem;
-	int elemento;
+	long int elemento;
 
 	cin >> num_elem;
 
@@ -42,12 +42,12 @@ bool leerDatos(PriorityQueue<int> & cola) {
 * los participantes y por otro lado se calcula el numero de seguidores totales en la
 * partida actual, se eliminan los dos equipos de la cola y se calcula el nuevo numero de seguidores
 * del ganador, que posteriormente es introducido en la cola.
-* Complejidad
+* Complejidad O(n)
 */
 
 void resuelve() {
 
-	PriorityQueue<int> cola;
+	PriorityQueue<long int> cola;
 	long int gorras;
 	long int ganador = 0;
 
