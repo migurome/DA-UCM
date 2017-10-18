@@ -1,8 +1,7 @@
 /*
 * Grupo DA09, Miguel Romero
 * Solución: una función recursiva que recorre el árbol comprobando que está ordenadoy que está balanceado
-*
-*  */
+*/
 
 #include <algorithm>
 #include <iostream>
@@ -12,14 +11,16 @@
 using namespace std;
 
 /**
-* Lee un árbol AVL
+* Rellena un arbol AVL
+* @param arbol Arbol que queremos rellenar
+* @param k1 primer pibote desde el que queremos leer
+* @param k2 segundo pibote hasta el que queremos leer
+* @return valor booleano, false si se han podido leer datos y true en caso contrario
 */
 
 
 bool leerDatos(map<int,int> & arbol, int nvalores, int &k1, int &k2) {
-	
-	bool finLeer;
-	
+		
 	if (nvalores == 0)
 		return true;
 
@@ -38,14 +39,11 @@ bool leerDatos(map<int,int> & arbol, int nvalores, int &k1, int &k2) {
 }
 
 /**
-* Lee un árbol binario de la entrada estándar
-* 
-* 
-* 
-* 
+* @bvrief Se crea un iterador y se situa en k1, mostramos por pantalla los elementos contenidos entre k1 y k2 
 * @param arbol
 * @param k1
 * @param k2
+* El coste es de O(n) siendo n el numero de elementos que componen el árbol
 */
 
 
@@ -68,13 +66,13 @@ void procesarCaso(const map<int, int> & arbol, int k1, int k2) {
 }
 
 /**
-* Extrae los parametros del fichero y carga el arbol
+* @brief Se realiza la lectura del arbol y de los parámetros k1 y k2, finalmente se invoca a la función procesarCaso para que 
+* muestre el resultado
+* @return finLectura valor ofrecido por la funcion procesarCaso
 */
 
 
 bool analizarCaso() {
-
-	// ajustes para que cin extraiga directamente de un fichero
 
 	int valores, k1, k2;
 	map<int, int> arbol;
@@ -86,9 +84,6 @@ bool analizarCaso() {
 
 	if (!finLectura)
 		procesarCaso(arbol, k1, k2);
-
-	// para dejar todo como estaba al principio
-
 	
 	return finLectura;
 }
