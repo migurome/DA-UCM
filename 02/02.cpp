@@ -1,7 +1,6 @@
 /*
 * Grupo DA09, Miguel Romero
 * Solución: una función recursiva que recorre el árbol comprobando que está ordenadoy que está balanceado
-*
 *  */
 
 #include <algorithm>

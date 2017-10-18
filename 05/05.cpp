@@ -1,6 +1,5 @@
 /*
 * Grupo DA09, Miguel Romero
-* Solución:
 */
 
 #include <algorithm>
