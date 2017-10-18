@@ -79,6 +79,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ae002503d88f4830f16ef855b0327b5d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="03_8cpp.html#ae002503d88f4830f16ef855b0327b5d2">procesarCaso</a> (const map&lt; int, int &gt; &amp;arbol, int k1, int k2)</td></tr>
 <tr class="separator:ae002503d88f4830f16ef855b0327b5d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a577ace6cc8f6e78c7618587a717c7357"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="03_8cpp.html#a577ace6cc8f6e78c7618587a717c7357">analizarCaso</a> ()</td></tr>
+<tr class="memdesc:a577ace6cc8f6e78c7618587a717c7357"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se realiza la lectura del arbol y de los parámetros k1 y k2, finalmente se invoca a la función procesarCaso para que muestre el resultado.  <a href="#a577ace6cc8f6e78c7618587a717c7357">More...</a><br /></td></tr>
 <tr class="separator:a577ace6cc8f6e78c7618587a717c7357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a29781a20c5dd4153c3c1cecf0ff328"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="03_8cpp.html#a7a29781a20c5dd4153c3c1cecf0ff328">main</a> (int argc, char **args)</td></tr>
 <tr class="separator:a7a29781a20c5dd4153c3c1cecf0ff328"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,7 +99,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Extrae los parametros del fichero y carga el arbol </p>
+
+<p>Se realiza la lectura del arbol y de los parámetros k1 y k2, finalmente se invoca a la función procesarCaso para que muestre el resultado. </p>
+<dl class="section return"><dt>Returns</dt><dd>finLectura valor ofrecido por la funcion procesarCaso </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="03_8cpp_source.html#l00075">75</a> of file <a class="el" href="03_8cpp_source.html">03.cpp</a>.</p>
 
@@ -141,9 +144,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Lee un árbol AVL </p>
+<p>Rellena un arbol AVL </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arbol</td><td>Arbol que queremos rellenar </td></tr>
+    <tr><td class="paramname">k1</td><td>primer pibote desde el que queremos leer </td></tr>
+    <tr><td class="paramname">k2</td><td>segundo pibote hasta el que queremos leer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>valor booleano, false si se han podido leer datos y true en caso contrario </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="03_8cpp_source.html#l00019">19</a> of file <a class="el" href="03_8cpp_source.html">03.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="03_8cpp_source.html#l00022">22</a> of file <a class="el" href="03_8cpp_source.html">03.cpp</a>.</p>
 
 </div>
 </div>
@@ -173,7 +184,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="03_8cpp_source.html#l00096">96</a> of file <a class="el" href="03_8cpp_source.html">03.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="03_8cpp_source.html#l00091">91</a> of file <a class="el" href="03_8cpp_source.html">03.cpp</a>.</p>
 
 </div>
 </div>
@@ -208,17 +219,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Lee un árbol binario de la entrada estándar</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Se crea un iterador y se situa en k1, mostramos por pantalla los elementos contenidos entre k1 y k2 </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">arbol</td><td></td></tr>
     <tr><td class="paramname">k1</td><td></td></tr>
-    <tr><td class="paramname">k2</td><td></td></tr>
+    <tr><td class="paramname">k2</td><td>El coste es de O(n) siendo n el numero de elementos que componen el árbol </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="03_8cpp_source.html#l00052">52</a> of file <a class="el" href="03_8cpp_source.html">03.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="03_8cpp_source.html#l00050">50</a> of file <a class="el" href="03_8cpp_source.html">03.cpp</a>.</p>
 
 </div>
 </div>
