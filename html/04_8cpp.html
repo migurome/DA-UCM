@@ -78,8 +78,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad9d77e7227ef1985f59a8f1ed8a4c2f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="04_8cpp.html#ad9d77e7227ef1985f59a8f1ed8a4c2f6">leerCaso</a> (<a class="el" href="classmap.html">map</a>&lt; int, int &gt; &amp;arbol)</td></tr>
+<tr class="memdesc:ad9d77e7227ef1985f59a8f1ed8a4c2f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dado un arbol AVL lo rellena con los valores ofrecidos por fichero.  <a href="#ad9d77e7227ef1985f59a8f1ed8a4c2f6">More...</a><br /></td></tr>
 <tr class="separator:ad9d77e7227ef1985f59a8f1ed8a4c2f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0ccc2f00186dff125c7b1d8afd80537"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="04_8cpp.html#ae0ccc2f00186dff125c7b1d8afd80537">resuelve</a> ()</td></tr>
+<tr class="memdesc:ae0ccc2f00186dff125c7b1d8afd80537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dado un arbol AVL busca el elemento k-esimo.  <a href="#ae0ccc2f00186dff125c7b1d8afd80537">More...</a><br /></td></tr>
 <tr class="separator:ae0ccc2f00186dff125c7b1d8afd80537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a29781a20c5dd4153c3c1cecf0ff328"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="04_8cpp.html#a7a29781a20c5dd4153c3c1cecf0ff328">main</a> (int argc, char **args)</td></tr>
 <tr class="separator:a7a29781a20c5dd4153c3c1cecf0ff328"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,7 +103,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="04_8cpp_source.html#l00008">8</a> of file <a class="el" href="04_8cpp_source.html">04.cpp</a>.</p>
+<p>Dado un arbol AVL lo rellena con los valores ofrecidos por fichero. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arbol</td><td>Arbol que deseamos rellenar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>boolean falso en el caso de que no haya elementos con los que rellenar el arbol, true en caso contrario </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="04_8cpp_source.html#l00017">17</a> of file <a class="el" href="04_8cpp_source.html">04.cpp</a>.</p>
 
 </div>
 </div>
@@ -131,7 +142,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="04_8cpp_source.html#l00052">52</a> of file <a class="el" href="04_8cpp_source.html">04.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="04_8cpp_source.html#l00067">67</a> of file <a class="el" href="04_8cpp_source.html">04.cpp</a>.</p>
 
 </div>
 </div>
@@ -150,7 +161,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="04_8cpp_source.html#l00026">26</a> of file <a class="el" href="04_8cpp_source.html">04.cpp</a>.</p>
+<p>Dado un arbol AVL busca el elemento k-esimo. </p>
+<dl class="section return"><dt>Returns</dt><dd>booleano false en el caso de que el arbol no tenga elementos, true en caso contrario Coste es de O(log n) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="04_8cpp_source.html#l00041">41</a> of file <a class="el" href="04_8cpp_source.html">04.cpp</a>.</p>
 
 </div>
 </div>

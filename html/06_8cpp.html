@@ -80,20 +80,23 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt_usuario.html">tUsuario</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcompare.html">compare</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redefinición del operador &lt; para la comparación en la cola de prioridad de 2 elementos de tipo Dato Coste: constante de O(1)  <a href="classcompare.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af1202a147f3715fc98e4fdf82a5cabce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="06_8cpp.html#af1202a147f3715fc98e4fdf82a5cabce">leerDatos</a> (<a class="el" href="class_priority_queue.html">PriorityQueue</a>&lt; <a class="el" href="structt_usuario.html">tUsuario</a>, <a class="el" href="classcompare.html">compare</a> &gt; &amp;colap, int n)</td></tr>
-<tr class="separator:af1202a147f3715fc98e4fdf82a5cabce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f9c81a227053162b0e3e048f89d7fea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="06_8cpp.html#a2f9c81a227053162b0e3e048f89d7fea">leerDatos</a> (<a class="el" href="class_priority_queue.html">PriorityQueue</a>&lt; <a class="el" href="structt_usuario.html">tUsuario</a>, <a class="el" href="classcompare.html">compare</a> &gt; &amp;cola, int n)</td></tr>
+<tr class="memdesc:a2f9c81a227053162b0e3e048f89d7fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dada una cola de prioridad de <a class="el" href="structt_usuario.html">tUsuario</a> y un numero n de elementos se incluyen los campos id y periodo para cada uno de ellos.  <a href="#a2f9c81a227053162b0e3e048f89d7fea">More...</a><br /></td></tr>
+<tr class="separator:a2f9c81a227053162b0e3e048f89d7fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a324652b52d48051a02dcc4a83832c034"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="06_8cpp.html#a324652b52d48051a02dcc4a83832c034">resuelveCaso</a> ()</td></tr>
+<tr class="memdesc:a324652b52d48051a02dcc4a83832c034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se crea una cola de prioridad con los elementos que se pasan por entrada, cada <a class="el" href="structt_usuario.html">tUsuario</a> incluye un campo periodo que mide el avance del paquete enviado. Una vez rellena la cola se van leyendo uno por uno los elemento de esta, al finalizar se modifica el periodo de este sumando su prioridad y la cola reajusta su posición en la misma.  <a href="#a324652b52d48051a02dcc4a83832c034">More...</a><br /></td></tr>
 <tr class="separator:a324652b52d48051a02dcc4a83832c034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="06_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af1202a147f3715fc98e4fdf82a5cabce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1202a147f3715fc98e4fdf82a5cabce">&#9670;&nbsp;</a></span>leerDatos()</h2>
+<a id="a2f9c81a227053162b0e3e048f89d7fea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f9c81a227053162b0e3e048f89d7fea">&#9670;&nbsp;</a></span>leerDatos()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -102,7 +105,7 @@ Functions</h2></td></tr>
           <td class="memname">void leerDatos </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_priority_queue.html">PriorityQueue</a>&lt; <a class="el" href="structt_usuario.html">tUsuario</a>, <a class="el" href="classcompare.html">compare</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>colap</em>, </td>
+          <td class="paramname"><em>cola</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -118,7 +121,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="06_8cpp_source.html#l00022">22</a> of file <a class="el" href="06_8cpp_source.html">06.cpp</a>.</p>
+<p>Dada una cola de prioridad de <a class="el" href="structt_usuario.html">tUsuario</a> y un numero n de elementos se incluyen los campos id y periodo para cada uno de ellos. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cola</td><td>Cola de prioridad vacia a rellenar </td></tr>
+    <tr><td class="paramname">n</td><td>Numero total de usuarios que se van a incluir en la cola </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="06_8cpp_source.html#l00039">39</a> of file <a class="el" href="06_8cpp_source.html">06.cpp</a>.</p>
 
 </div>
 </div>
@@ -137,7 +149,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="06_8cpp_source.html#l00060">60</a> of file <a class="el" href="06_8cpp_source.html">06.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="06_8cpp_source.html#l00088">88</a> of file <a class="el" href="06_8cpp_source.html">06.cpp</a>.</p>
 
 </div>
 </div>
@@ -156,7 +168,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="06_8cpp_source.html#l00033">33</a> of file <a class="el" href="06_8cpp_source.html">06.cpp</a>.</p>
+<p>Se crea una cola de prioridad con los elementos que se pasan por entrada, cada <a class="el" href="structt_usuario.html">tUsuario</a> incluye un campo periodo que mide el avance del paquete enviado. Una vez rellena la cola se van leyendo uno por uno los elemento de esta, al finalizar se modifica el periodo de este sumando su prioridad y la cola reajusta su posición en la misma. </p>
+<dl class="section return"><dt>Returns</dt><dd>booleano false en el caso de que no haya mas elementos para leer true en caso contrario Coste: es lineal en el número de mensajes o paquetes a enviar y logarítmico en el número de elementos de la cola, por tanto tiene un coste de M log(N) siendo M el número de mensajes y N el número de elementos de la cola </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="06_8cpp_source.html#l00061">61</a> of file <a class="el" href="06_8cpp_source.html">06.cpp</a>.</p>
 
 </div>
 </div>
