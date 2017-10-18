@@ -1,3 +1,7 @@
+/**
+* Grupo DA09, Miguel Romero
+*/
+
 #include <algorithm>
 #include <iostream>
 #include <fstream>
@@ -5,6 +9,11 @@
 
 using namespace std;
 
+/**
+* @brief Dado un arbol AVL lo rellena con los valores ofrecidos por fichero
+* @param arbol Arbol que deseamos rellenar
+* @return boolean falso en el caso de que no haya elementos con los que rellenar el arbol, true en caso contrario
+*/
 bool leerCaso(map<int, int> &arbol){
 	
 	int dato, nvalores;
@@ -22,6 +31,12 @@ bool leerCaso(map<int, int> &arbol){
 	return true;
 
 }
+
+/**
+* @brief Dado un arbol AVL busca el elemento k-esimo
+* @return booleano false en el caso de que el arbol no tenga elementos, true en caso contrario
+* Coste es de O(log n)
+*/
 
 bool resuelve() {
 
