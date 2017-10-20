@@ -25,28 +25,25 @@ public:
 bool leerDatos(PriorityQueue<tInstrumento, compare> &cola, int &npartituras) {
 
 	int ncasos, elem, i = 0;
+	bool finLeer = !cin.fail();
 	tInstrumento instrumento;
 
+	cin >> npartituras >> ncasos;
 
-	if (!cin.eof()) {
+	npartituras -= ncasos;
 
-		cin >> npartituras >> ncasos;
+	do {
+		cin >> elem;
+		instrumento.max = elem;
+		instrumento.musicos = elem;
+		instrumento.npartituras = 1;
+		cola.push(instrumento);
+		i++;
+	} while (i < ncasos);
+		
+	finLeer = !cin.fail();
 
-		npartituras -= ncasos;
-
-		do {
-			cin >> elem;
-			instrumento.max = elem;
-			instrumento.musicos = elem;
-			instrumento.npartituras = 1;
-			cola.push(instrumento);
-			i++;
-		} while (i < ncasos);
-
-		return true;
-	}
-	else
-		return false;
+	return finLeer;
 
 }
 
@@ -72,7 +69,8 @@ bool resuelveCaso() {
 			cola.push(auxiliar);
 		}
 
-		cout << cola.top().max << endl;
+		if(cola.top().musicos != 0)
+			cout << cola.top().max << endl;
 
 		return true;
 	}
