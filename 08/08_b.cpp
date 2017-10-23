@@ -1,10 +1,12 @@
 /**
 * Grupo DA09, Miguel Romero
+* Desarrollo utilizando las bibliotecas standard de c++
 */
 
 #include <iostream>
 #include <fstream>
-#include "PriorityQueue.h"
+#include <queue>
+
 using namespace std;
 
 struct tInstrumento {
@@ -18,21 +20,21 @@ struct tInstrumento {
 class compare {
 public:
 	bool operator()(tInstrumento instrumento1, tInstrumento instrumento2) {
-		return instrumento1.max > instrumento2.max;
+		return instrumento1.max < instrumento2.max;
 	}
 };
 
-bool leerDatos(PriorityQueue<tInstrumento, compare> &cola, int &npartituras) {
+bool leerDatos(priority_queue<tInstrumento, vector<tInstrumento>, compare> &cola, int &npartituras) {
 
 	int ncasos, elem, i = 0;
+	bool finLeer = !cin.fail();
 	tInstrumento instrumento;
 
+	cin >> npartituras >> ncasos;
 
-	if (!cin.eof()) {
+	npartituras -= ncasos;
 
-		cin >> npartituras >> ncasos;
-
-		npartituras -= ncasos;
+	if (!cin.fail()) {
 
 		do {
 			cin >> elem;
@@ -42,7 +44,6 @@ bool leerDatos(PriorityQueue<tInstrumento, compare> &cola, int &npartituras) {
 			cola.push(instrumento);
 			i++;
 		} while (i < ncasos);
-
 		return true;
 	}
 	else
@@ -52,22 +53,31 @@ bool leerDatos(PriorityQueue<tInstrumento, compare> &cola, int &npartituras) {
 
 bool resuelveCaso() {
 
-	PriorityQueue<tInstrumento, compare> cola;
+	priority_queue<tInstrumento, vector<tInstrumento>, compare> cola;
+
 	int partituras;
 	tInstrumento auxiliar;
 
-	if(leerDatos(cola, partituras)){
+
+	if (leerDatos(cola, partituras)) {
 
 		for (int i = 0; i < partituras; i++) {
 
-			auxiliar= cola.top();
+			auxiliar = cola.top();
+			
 			auxiliar.npartituras++;
-			auxiliar.max = (auxiliar.musicos / auxiliar.npartituras) + (auxiliar.musicos % auxiliar.npartituras);
+
+			if (auxiliar.musicos % auxiliar.npartituras == 0)
+				auxiliar.max = (auxiliar.musicos / auxiliar.npartituras);
+			else
+				auxiliar.max = (auxiliar.musicos / auxiliar.npartituras) + 1;
+
 			cola.pop();
 			cola.push(auxiliar);
 		}
 
-		cout << cola.top().max << endl;
+		if(cola.top().musicos != 0)
+			cout << cola.top().max << endl;
 
 		return true;
 	}
@@ -77,17 +87,17 @@ bool resuelveCaso() {
 
 int main() {
 
-	#ifndef DOMJUDGE
-		std::ifstream in("casos.txt");
-		auto cinbuf = std::cin.rdbuf(in.rdbuf());
-	#endif
+#ifndef DOMJUDGE
+	std::ifstream in("casos.txt");
+	auto cinbuf = std::cin.rdbuf(in.rdbuf());
+#endif
 
-	while (resuelveCaso());
+while (resuelveCaso());
 
-	#ifndef DOMJUDGE
-		std::cin.rdbuf(cinbuf);
-		system("pause");
-	#endif
+#ifndef DOMJUDGE
+	std::cin.rdbuf(cinbuf);
+	system("pause");
+#endif
 
 	return 0;
 }
