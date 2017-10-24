@@ -5,33 +5,32 @@
 #include <iostream>
 #include <fstream>
 #include "Grafo.h"
-#include "ConjuntosDisjuntos.h"
 
 using namespace std;
 
+enum tColores{azul, rojo, sin_color};
 
 bool resuelveCaso() {
 
-	int tam_grafo, naristas, elem_1, elem_2;
-	
+	int nvertices, naristas, elem_1, elem_2;
 	
 
-	cin >> tam_grafo >> naristas;
+	cin >> nvertices >> naristas;
 
 	if (cin.fail())
 		return false;
+	Grafo grafo(nvertices);
 
-	ConjuntosDisjuntos conjunto(tam_grafo);
+	
 
 	for (int i = 0; i < naristas; i++) {
 		cin >> elem_1 >> elem_2;
-		conjunto.unir(elem_1, elem_2);
+		grafo.ponArista(elem_1, elem_2);
 	}
 
-	if (conjunto.count() > 1 || naristas %2 == 0)
-		cout << "NO" << endl;
-	else
-		cout << "SI" << endl;
+	vector<tColores> coloreado(grafo.V(), sin_color);
+
+	grafo.print();
 
 	return true;
 }
