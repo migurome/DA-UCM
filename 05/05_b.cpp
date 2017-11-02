@@ -11,7 +11,7 @@
 using namespace std;
 
 /**
-* @brief Lee una cola de prioridad de la entrada estándar
+* @brief 
 */
 
 class compare {
