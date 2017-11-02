@@ -1,6 +1,6 @@
 /*
 * Grupo DA09, Miguel Romero
-* Desarrollo utilizando las bibliotecas standard de c++
+* Solución:
 */
 
 #include <algorithm>
@@ -11,15 +11,16 @@
 using namespace std;
 
 /**
-* @brief 
+* @brief Lee una cola de prioridad de la entrada estándar
 */
 
 class compare {
 public:
-	bool operator()(int elem_1, int elem_2) {
+	bool operator()(long int elem_1, long int elem_2) {
 		return elem_1 > elem_2;
 	}
 };
+
 
 bool leerDatos(priority_queue<long int, vector<long int>, compare> &cola) {
 
