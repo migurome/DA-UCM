@@ -1,6 +1,5 @@
 /*
 * Grupo DA09, Miguel Romero
-* Solución:
 */
 
 #include <algorithm>
@@ -11,7 +10,7 @@
 using namespace std;
 
 /**
-* @brief Lee una cola de prioridad de la entrada estándar
+* @brief Comparador
 */
 
 class compare {
@@ -21,6 +20,11 @@ public:
 	}
 };
 
+/**
+* @brief dada una cola de prioridad la rellena.
+* @param cola , cola de prioridad a rellenar
+* @return true si se ha podido rellenar la cola, false en caso contrario
+*/
 
 bool leerDatos(priority_queue<long int, vector<long int>, compare> &cola) {
 
@@ -50,7 +54,8 @@ bool leerDatos(priority_queue<long int, vector<long int>, compare> &cola) {
 * los participantes y por otro lado se calcula el numero de seguidores totales en la
 * partida actual, se eliminan los dos equipos de la cola y se calcula el nuevo numero de seguidores
 * del ganador, que posteriormente es introducido en la cola.
-* Complejidad
+* Complejidad Cada operación de pop tiene un coste de O(log n) y lo mismo para instertar, por lo
+* por lo tanto el coste es de 3 O(log n)
 */
 
 void resuelve() {
@@ -80,7 +85,6 @@ void resuelve() {
 
 		cout << gorras << endl;
 	}
-
 }
 
 int main(int argc, char** args) {
