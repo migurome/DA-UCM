@@ -1,4 +1,5 @@
 #include "GrafoValorado.h"
+#include "ConjuntosDisjuntos.h"
 #include "IndexPQ.h"
 #include <climits>
 
@@ -48,16 +49,17 @@ private:
 public:
 
     Worker(GrafoValorado<int> const & g) : pq(g.V()), edgeTo(g.V()),
-    distTo(g.V(), INT_MAX), marked(g.V(), false) {
-	if (g.V() == 1) coste = 0;
-	else
-	    coste = resuelve(g);
 
-    };
+	distTo(g.V(), INT_MAX), marked(g.V(), false) {
+		if (g.V() == 1) 
+			coste = 0;
+		else
+			coste = resuelve(g);
+	};
 
-    int getCoste() {
-	return coste;
-    };
+	int getCoste() {
+		return coste;
+	};
 
 
 };

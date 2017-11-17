@@ -44,20 +44,23 @@ public:
 		if (cin.fail())  // hemos terminado de procesar todos los casos
 			return true;
 
-		int v, w, c;
+		int elem_1, elem_2, coste;
 
 		GrafoValorado<int> g(tam_grafo);
+		ConjuntosDisjuntos conjunto(tam_grafo + 1);
+
 		for (int i = 0; i < nelementos; ++i) {
-			std::cin >> v;
-			std::cin >> w;
-			std::cin >> c;
-			Arista<int> a(v - 1, w - 1, c);
+			std::cin >> elem_1;
+			std::cin >> elem_2;
+			std::cin >> coste;
+			Arista<int> a(elem_1 - 1, elem_2 - 1, coste);
 			g.ponArista(a);
+			conjunto.unir(elem_1, elem_2);
 		}
-	
+
 		Worker barro(g);
 
-		if (barro.getCoste() >= 0)
+		if (barro.getCoste() >= 0 && conjunto.size(elem_1) == tam_grafo)
 			cout << barro.getCoste() << endl;
 		else
 			cout << "Imposible" << endl;
