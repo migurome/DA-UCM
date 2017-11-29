@@ -1,0 +1,7 @@
+EJ queremos organizar una bbq a la que hemos invitado a 
+N amigos. Compramos P chuletas donde N<= P <= 2N.
+Para cada amigo conocemos su satisfacción comiendo una chuleta S1
+y comiendo dos chuletas S2. Tdodos los amigos deben comer al menos
+una chuleta pero para evitar problemas posteriores nadie puede comer mas de dos. 
+Decidir cómo repartir las chuletas para obetener la máxima satisfacción posible.
+
