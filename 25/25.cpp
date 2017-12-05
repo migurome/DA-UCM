@@ -1,9 +1,12 @@
+/*
+* Grupo DA09, Miguel Romero
+* Solucion: 
+* Coste: 
+*/
+
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <queue>
-
-#include <algorithm>
 #include "JudgeSolver.h"
 
 using namespace std;
@@ -42,7 +45,14 @@ public:
 	class compare {
 	public:
 		bool operator()(tConferencia a, tConferencia b) {
-			return a.inicio >= b.inicio;
+			return a.inicio > b.inicio;
+		}
+	};
+
+	class comparador_sala {
+	public:
+		bool operator()(tConferencia a, tConferencia b) {
+			return a.fin > b.fin;
 		}
 	};
 
@@ -50,7 +60,7 @@ public:
 
 		int nconferecias;
 		priority_queue<tConferencia, vector<tConferencia>, compare> conferencias;
-		priority_queue<tConferencia, vector<tConferencia>, compare> salas;
+		priority_queue<tConferencia, vector<tConferencia>, comparador_sala> salas;
 		tConferencia aux;
 
 		cin >> nconferecias;
@@ -69,7 +79,6 @@ public:
 
 		salas.push(conferencias.top());
 		conferencias.pop();
-
 
 		while (!conferencias.empty()) {
 
