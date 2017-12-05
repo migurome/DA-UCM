@@ -1,16 +1,8 @@
-/**
-* Grupo DA09, Miguel Romero
-* Solucion: Los pasajeros se guardan en un vector, seguidamente este se ordena mediante sort de mayor a menor
-* Se dispone de dos iteradores imax e imin, los cuales se sitúan al principio y final del vector respectivamente-
-* En cada iteración se intenta colocar a los pasajeros de los extremos del vector, el de mayor peso con el de menor
-* peso, para equilibrar el peso total del telesilla.
-* Coste: El coste de ordenar el vector es de O(n), y el de recorrerlo de extremo a extremo es también de O(n), por lo que 
-* el coste total del algoritmo es de 2 O(n) 
-*/
-
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <queue>
+
 #include <algorithm>
 #include "JudgeSolver.h"
 
@@ -45,40 +37,51 @@ public:
 	* @return false ya que no se controla si ha habido un error o no
 	*/
 
-	struct myclass {
-		bool operator() (int i, int j) { return (i>j); }
-	} myobject;
+	struct tConferencia { long int inicio; long int fin; };
+
+	class compare {
+	public:
+		bool operator()(tConferencia a, tConferencia b) {
+			return a.inicio >= b.inicio;
+		}
+	};
 
 	bool resolverCaso() {
 
+		int nconferecias;
+		priority_queue<tConferencia, vector<tConferencia>, compare> conferencias;
+		priority_queue<tConferencia, vector<tConferencia>, compare> salas;
+		tConferencia aux;
 
-		int peso_max, nusuarios, elemento, nviajes = 0;
-		cin >> peso_max >> nusuarios;
+		cin >> nconferecias;
 
-
-		vector<int> usuarios;
-
-		if (cin.fail())  // hemos terminado de procesar todos los casos
+		if (nconferecias == 0)
 			return true;
 
-		for (int i = 0; i < nusuarios; i++) {
-			cin >> elemento;
-			usuarios.push_back(elemento);
+		for (int i = 0; i < nconferecias; i++) {
+			cin >> aux.inicio;
+			cin >> aux.fin;
+
+			conferencias.push(aux);
 		}
 
-		sort(usuarios.begin(), usuarios.end(), myobject);
+		/*Cojo la primera conferencia*/
+
+		salas.push(conferencias.top());
+		conferencias.pop();
 
 
-		int imax = 0, imin = nusuarios - 1;
+		while (!conferencias.empty()) {
 
-		while (imax <= imin) {
-			if (!((usuarios[imax] + usuarios[imin]) > peso_max))
-				imin--;
-			nviajes++;
-			imax++;
+			if (salas.top().fin <= conferencias.top().inicio) {
+				salas.pop();
+			}
+
+			salas.push(conferencias.top());
+			conferencias.pop();
 		}
 
-		cout << nviajes << endl;
+		cout << salas.size() << endl;
 
 		return false;
 	}

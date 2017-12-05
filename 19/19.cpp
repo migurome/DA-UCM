@@ -1,13 +1,10 @@
-﻿/**
+/*
 * Grupo DA09, Miguel Romero
-* Solucion: Los datos tanto para atacantes como para defensores se introducen en una cola de prioridad
-* ordenada de mayor a menor. En cada iteración se comprueba si el valor de los defensores es mayor que 
-* la de los atacantes, en tal caso se eliminan ambos elementos de sus respectivas colas, en caso contrario
-* únicamente se elimina el dato de la cola de atacantes y se dá por perdida la bartalla. La suma total de 
-* victorias se acumula en una variable local.
-* Coste: la inclusion de las dos colas es de O(log n) y la de extracción de datos es también de O (log n)
-* por lo que en el caso peor, el cual supone que para todos los casos el numero de defensores es mayor que el 
-* que el de atacantes es de 4 O (log n)
+* Solucion: Los casos de entrada se recogen en una cola de prioridad ordenada por precios, de mayor a menor
+* Siempre que haya elementos en la cola se van extrayendo realizando la suma parcial del tercero de ellos y
+* y acumulando su valor en la variable ahorro.
+* Coste: el coste de incluir los elementos en la cola es de log n  y el de eliminar un elemento de esta también es 
+* de log n por lo tanto el coste totál será de 2 (log n)
 */
 
 #include <iostream>
@@ -46,44 +43,39 @@ public:
 	* @return false ya que no se controla si ha habido un error o no
 	*/
 
-	struct myclass {
-		bool operator() (int i, int j) { return (i>j); }
-	} myobject;
-
 	bool resolverCaso() {
 
 
-		int nelementos, elemento, victorias = 0;
-		cin >> nelementos;
+		int nlibros, elemento, ahorro = 0;
+		cin >> nlibros;
 
-		priority_queue<int> atacantes;
-		priority_queue<int> defensores;
+
+		priority_queue<int> libros;
 
 		if (cin.fail())  // hemos terminado de procesar todos los casos
 			return true;
 
-		for (int i = 0; i < nelementos; i++) {
+		for (int i = 0; i < nlibros; i++) {
 			cin >> elemento;
-			atacantes.push(elemento);
+			libros.push(elemento);
 		}
 
-		for (int i = 0; i < nelementos; i++) {
-			cin >> elemento;
-			defensores.push(elemento);
-		}
+		while (!libros.empty()) {
 
-		for (int i = 0; i < nelementos; i++) {
-
-			if (atacantes.top() <= defensores.top()){
-				defensores.pop();
-				victorias++;
+			libros.pop();
+			
+			if (!libros.empty()){
+				libros.pop();
+				if (!libros.empty()) {
+					ahorro += libros.top();
+					libros.pop();
+				}
 			}
 
-			atacantes.pop();
-		
+
 		}
 
-		cout << victorias << endl;
+		cout << ahorro << endl;
 
 		return false;
 	}

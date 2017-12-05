@@ -1,3 +1,13 @@
+/**
+* Grupo DA09, Miguel Romero
+* Solucion: Los agujeros se incluyen en una cola ordenada de menor a mayor, asimismo en una variable auxiliar
+* se almacena la suma del punto en el que se ha colocado el parche mas el tamaño de este para recubrir todos
+* los agujeros que queden en medio de estos. Siempre que un agujero esté por encima de esta variable se colocará
+* un nuevo parche.
+* Coste: El coste de incluir nuevos parches en la cola de priodidad es de lon n y el de extraer elementos de esta
+* es también de log n , por lo que el coste total es de 2 log n
+*/
+
 #include <iostream>
 #include <fstream>
 #include <queue>
